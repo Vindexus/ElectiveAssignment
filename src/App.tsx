@@ -1,5 +1,5 @@
 import {useEffect, useRef, useState} from 'react'
-import {getSINError} from "./lib/sin-validation.ts";
+import {formatInputGrouped, getSINError} from "./lib/sin-validation.ts";
 import Alert from "./components/Alert.tsx";
 
 function App() {
@@ -9,24 +9,27 @@ function App() {
 	const errDebounceRef = useRef<number>(0)
 
 	useEffect(() => {
+		console.log('Valid SIN you can try: 587 583 436')
 		return () => {
 			clearTimeout(errDebounceRef.current)
 		}
 	}, [])
 
 	function onChangeSIN (e: React.ChangeEvent<HTMLInputElement>) {
-		setSIN(e.target.value)
+		// Remove linebreaks and unneeded extra whitespace, group by 3s
+		const formattedValue = formatInputGrouped(e.target.value)
+		setSIN(formattedValue)
 		setError(null)
 		setIsValid(false)
 		clearTimeout(errDebounceRef.current)
 
-		if (!e.target.value.length) {
+		if (!formattedValue.length) {
 			return
 		}
 
 		// Debounce is so that you don't get "TOO SHORT!" messages as you're still typing
 		errDebounceRef.current = setTimeout(() => {
-			const err = getSINError(e.target.value)
+			const err = getSINError(formattedValue)
 			setError(err)
 			if (!err) {
 				setIsValid(true)
@@ -56,7 +59,7 @@ function App() {
 			</form>
 			<div className={'p-0.5 mt-1 min-h-6'}>
 				{error && <Alert type={'error'}>{error}</Alert>}
-				{isValid && <Alert type={'success'}>That SIN is valid! Yay!</Alert>}
+				{isValid && <Alert type={'success'}><code className={'font-bold text-green-600'}>{sin}</code> is a valid SIN! Yay!</Alert>}
 			</div>
 		</div>
 	)

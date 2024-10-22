@@ -45,6 +45,8 @@ export default function Alert ({type, children,size='1em'}: AlertProps) {
 		(type === 'success' ? 'text-green-500' : '')
 	}>
 		{icon}
-		{children}
+		<div>
+			{children}
+		</div>
 	</div>
 }

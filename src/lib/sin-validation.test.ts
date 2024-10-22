@@ -1,5 +1,5 @@
 import {test, expect} from "vitest";
-import {getSINError, getLuhnSum, isValidLuhnNumber} from "./sin-validation.ts";
+import {getSINError, getLuhnSum, isValidLuhnNumber, formatInputGrouped} from "./sin-validation.ts";
 
 test('luhn sum', () => {
 	expect(getLuhnSum('121 212 121')).toEqual(21)
@@ -22,4 +22,17 @@ test('errors', () => {
 test('valid', () => {
 	expect(getSINError('685 031 197')).toBe(null)
 	expect(getSINError('0 4 6 4 5 4 2 8 6')).toBe(null)
+})
+
+test('formatter', () => {
+	expect(formatInputGrouped('123     ABC 3f6      ')).toEqual('123 ABC 3f6 ')
+	expect(formatInputGrouped('123 ')).toEqual('123 ')
+	expect(formatInputGrouped(' 123123')).toEqual('123 123')
+	expect(formatInputGrouped('             ')).toEqual('')
+	expect(formatInputGrouped('             1')).toEqual('1')
+	expect(formatInputGrouped(`
+	
+587583436
+
+`)).toEqual('587 583 436')
 })

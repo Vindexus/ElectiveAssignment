@@ -17,5 +17,9 @@ test('errors', () => {
 	expect(getSINError('     ')).toBe('Must be 9 digits long')
 	expect(getSINError('1234567890')).toBe('Must be 9 digits long')
 	expect(getSINError('121 212 121')).toBe('Not a valid SIN')
+})
 
+test('valid', () => {
+	expect(getSINError('685 031 197')).toBe(null)
+	expect(getSINError('0 4 6 4 5 4 2 8 6')).toBe(null)
 })

@@ -21,6 +21,7 @@ test('errors', () => {
 
 test('valid', () => {
 	expect(getSINError('685 031 197')).toBe(null)
+	expect(getSINError(685031197)).toBe(null)
 	expect(getSINError(`
 	685 031 197
 	
@@ -39,4 +40,5 @@ test('formatter', () => {
 587583436
 
 `)).toEqual('587 583 436')
+	expect(formatInputGrouped(685031197)).toEqual('685 031 197')
 })

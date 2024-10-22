@@ -71,10 +71,11 @@ export function getLuhnSum (input: string) : number {
  * for people to read. We remove leading spaces because it's more likely those a mistake
  * on the user's part
  */
-export function formatInputGrouped (input: string) : string {
+export function formatInputGrouped (input: string | number) : string {
 	if (!input) {
 		return ''
 	}
+	input = input.toString()
 	const lastChar = input[input.length - 1]
 
 	// Get just the non-whitespace characters to work with

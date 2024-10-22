@@ -52,7 +52,10 @@ I assumed that the SIN input might **copied and pasted**, so I made sure to acco
 I did validation automatically upon typing instead of requiring a "Validate" button because I thought it would be a better user experience. I also chose to add debounce to the validation so that it wouldn't run as you were actively typing.
 
 ### Validating Non-numeric Characters
-I added an extra rule of validation to check for non-numeric characters. I could have prevented certain characters from being input, or stripped them out of the final SIN, but I chose not to. Keeping them in and showing the error specifically is more explicit. 
+I added an extra rule of validation to check for non-numeric characters. I could have prevented certain characters from being input, or stripped them out of the final SIN, but I chose not to. Keeping them in and showing the error specifically is more explicit.
+
+### First Digit Validation
+I did some Googling and found that there are special rules for SIN that start with 0, 8, or 9. I decided not to add validation for that because it wasn't listed as a requirement in the PDF.
 
 ### Tailwind
 I used Tailwind for styling because I like having my markup and my styles in the same file, and because I know it is part of your tech stack.

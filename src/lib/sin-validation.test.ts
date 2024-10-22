@@ -21,6 +21,10 @@ test('errors', () => {
 
 test('valid', () => {
 	expect(getSINError('685 031 197')).toBe(null)
+	expect(getSINError(`
+	685 031 197
+	
+`)).toBe(null)
 	expect(getSINError('0 4 6 4 5 4 2 8 6')).toBe(null)
 })
 

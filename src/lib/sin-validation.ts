@@ -33,29 +33,18 @@ export function isValidLuhnNumber (input: string) : boolean {
  * @param input
  */
 export function getLuhnSum (input: string) : number {
-	console.log('input', input)
 	const cleaned = getCleanedNumber(input)
 	const digits = cleaned.split('').map(Number)
-	console.log('digits', digits.join(' '))
 	const sum = digits.reduce((total, digit, idx) => {
-		console.log('-----')
-		console.log('total', total)
-		console.log('digit', digit)
-		console.log('idx', idx)
 		if (idx % 2 === 0) {
-			console.log('is odd, just add', digit)
 			return total + digit
 		}
 
 		const dbl = digit * 2
-		console.log('doubled!', dbl)
 		if (dbl > 9) {
-			console.log('is greater than 9, add the digits')
 			const added = dbl - 9
-			console.log('added', added)
 			return total + added
 		}
-		console.log('add the doubled', dbl)
 		return total + dbl
 	}, 0)
 

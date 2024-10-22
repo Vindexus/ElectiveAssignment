@@ -66,10 +66,10 @@ export function getLuhnSum (input: string) : number {
  * This is used to format the SIN for use in both display, and in the textbox
  * that the user is typing into
  * If you type "123 " it should stay as "123 " so we don't remove spaces as you're
- * typing them
+ * typing out "123 456"
  * If you type " 123123" it should become "123 123" because grouping by 3s is easier
- * for people to read. We remove leading spaces because it's more likely those a mistake
- * on the user's part
+ * for people to read. We remove leading spaces because it's more likely those are
+ * a typing mistake  * on the user's part
  */
 export function formatInputGrouped (input: string | number) : string {
 	if (!input) {

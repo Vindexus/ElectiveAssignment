@@ -3,7 +3,7 @@ import {formatInputGrouped, getSINError} from "./lib/sin-validation.ts";
 import Alert from "./components/Alert.tsx";
 
 function App() {
-  const [sin, setSIN] = useState<string>('')
+	const [sin, setSIN] = useState<string>('')
 	const [isValid, setIsValid] = useState<boolean>(false)
 	const [error, setError] = useState<string|null>(null)
 	const errDebounceRef = useRef<number>(0)
